@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+#Options +FollowSymLinks
+#<IfModule mod_rewrite.c>
+#        RewriteEngine On
+#        RewriteBase /krom/tsedit/tilesets
+#        RewriteRule ^(.*)$ 
+#        RewriteCond %{REQUEST_FILENAME} !-f
+#        RewriteCond %{REQUEST_FILENAME} !-d
+#        RewriteRule ^(.*)/tilesets/(.*)$ fucke2r [R,L]
+#</IfModule>

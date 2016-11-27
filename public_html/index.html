@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>tsedit</title>
+        <script src="jquery-1.5.1.js"></script>
+        <script src="TileObjectView.js"></script>
+        <script src="tsedit.js"></script>
+    </head>
+    <body onload="init()">
+        <h1>The canvas</h1>
+        <input type="button" value="Next Tile" onclick="do_next_tile()"/>
+        <input type="button" value="Prev Tile" onclick="do_prev_tile()"/>
+        <br />
+        <canvas id="tile_canvas" width="32" height="32"></canvas>
+        <br />
+        <div id="create_object_view">
+            <input type="button" xaction="paint_object" value="Refresh Object" />
+            <br />
+            <div>
+                From:
+                <input type="text"   name="from_tile" value="0"/>
+                <input type="button" xaction="next_tile" value="+"/>
+                <input type="button" xaction="prev_tile" value="-"/>
+            </div>
+            <div>
+                Row length: <input type="text" name="row_length" value="8"/>
+                <input type="button" xaction="more_length" value="+"/>
+                <input type="button" xaction="less_length" value="-"/>
+            </div>
+            <div>
+                Num rows: <input type="text" name="num_rows" value="6"/>
+                <input type="button" xaction="more_rows" value="+"/>
+                <input type="button" xaction="less_rows" value="-"/>
+            </div>
+
+            <div>
+                <input type="text" name="to_tile" value="0" disabled="disabled"/>
+                <input type="button" xaction="set_from_tile_to" value="Set from here"/>
+            </div>
+            
+            <canvas width="1024" height="768" style="border: 1px solid red;"></canvas>
+        </div>
+<!--        <img src="images/tiles.png"/>-->
+    </body>
+</html>

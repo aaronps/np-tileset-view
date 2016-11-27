@@ -1,0 +1,120 @@
+[
+    [0, 8, 6, "House1"],  //ok 
+    [48, 8, 6, "House2"], // ok
+    [96, 8, 6, "House3"], // ok
+    [144, 4, 4, "Small House"], // ok
+    [160, 8, 8, "House4"], // ok
+    [224, 8, 8, "House5"], // ok
+    [288, 8, 8, "House6"], // ok
+    [352, 8, 8, "House7"], // ok
+    [416, 10, 8, "House8"], // ok
+    [496, 10, 8, "House9"], // ok
+    [576, 8, 6, "House with trees1"], // ok
+    [624, 8, 6, "House with trees2"], // ok
+    [672, 8, 6, "House with trees3"], // ok
+
+    [720, 4, 4, "Small House with trees"], // ok
+    [736, 8, 8, "House with trees4"], // ok
+    [800, 8, 8, "House with trees5"], // ok
+    [864, 8, 8, "House with trees6"], // ok
+    [928, 8, 8, "House with trees7"], // ok
+    [992, 10, 8, "House with trees8"], // ok
+    [1072, 10, 8, "House with trees9"], // ok
+    [1152, 30, 22, "Mountain"], // ok
+    [1812, 30, 22, "Mountain"], // ok
+    [2472, 30, 24, "Mountain"], // ok
+    [3192, 27, 17, "Mountain"], // ok
+    [3651, 19, 17, "Mountain"], // ok
+    [3974, 29, 14, "Mountain"], // ok
+    [4380, 22, 12, "Mountain"], // ok
+    [4644, 15, 19, "Mountain"], // ok
+    [4929, 16, 18, "Mountain"], // ok
+    [5217, 19, 14, "Mountain"], // ok
+    [5483, 22, 19, "Mountain"], // ok
+    [5901, 26, 18, "Mountain"], // ok
+    [6369, 21, 10, "Mountain"], // ok
+    [6579, 14, 17, "Mountain"], // ok
+    [6817, 14, 17, "Mountain"], // ok
+    [7055, 30, 16, "Mountain"], // ok xxx some black line
+    [7535, 23, 8, "Mountain"],  // ok
+    [7719, 27, 14, "Mountain"], // ok
+    [8097, 4, 4, "Grass"], // ok
+    [8113, 4, 8, "Dirt"], // ok, could be 2: 8113,4,4 and 8129,4,4
+    [8145, 8, 7, "Dirt"], // ok
+    [8201, 8, 9, "Dirt"], // ok
+    [8273, 4, 10, "Dirt"], // ok
+    [8313, 6, 10, "Dirt"], // ok
+    [8373, 6, 6, "Dirt"], // ok
+    [8409, 6, 6, "Dirt"], // ok
+    [8445, 4, 4, "Dirt"], // ok
+    [8461, 4, 4, "Dirt"], // ok
+    [8477, 4, 4, "Dirt"], // ok
+    [8493, 4, 4, "Dirt"], // ok
+    [8509, 4, 4, "Dirt"], // ok
+    [8525, 4, 4, "Dirt"], // ok
+    [8541, 40, 25, "Lake"], // ok
+    [9541, 32, 18, "Outpost"], // ok
+    [10117, 10, 4, "Road"], // ok could be less
+    [10157, 4, 10, "Road"], // ok could be less
+    [10197, 10, 5, "Road"], // ok
+    [10247, 10, 4, "Road"], // ok
+    [10287, 10, 5, "Road"], // ok
+    [10337, 6, 6, "Road"], // ok
+    [10373, 6, 5, "Road"], // ok
+    [10403, 10, 4, "Road"], // ok
+    [10443, 10, 4, "Road"], // ok
+    [10483, 6, 6, "Road"], // ok
+    [10519, 10, 4, "Road"], // ok
+    [10559, 10, 5, "Road"], // ok
+    [10609, 6, 5, "Road"], // ok
+    [10639, 5, 4, "Road"], // ok
+    [10659, 5, 4, "Road"], // ok
+    [10679, 5, 4, "Road"], // ok
+    [10699, 5, 4, "Road"], // ok
+    [10719, 4, 5, "Road"], // ok
+    [10739, 4, 5, "Road"], // ok
+    [10759, 10, 4, "Road"], // ok
+    [10799, 10, 4, "Road"], // ok
+    [10839, 4, 14, "River"], // ok
+    [10895, 6, 3, "River"], // ok
+    [10913, 3, 2, "River"], // ok
+    [10919, 2, 2, "River"], // ok
+    [10923, 4, 4, "River"], // ok
+    [10939, 3, 4, "River"], // ok
+    [10951, 4, 3, "River"], // ok
+    [10963, 4, 1, "River"], // ok
+    [10967, 3, 1, "River"], // ok
+    [10970, 4, 7, "River"], // ok
+    [10998, 3, 2, "River"], // ok
+    [11004, 3, 4, "River"], // ok
+    [11016, 4, 4, "River"], // ok
+    [11032, 4, 3, "River"], // ok
+    [11044, 2, 2, "River"], // ok
+    [11048, 5, 3, "River"], // ok
+    [11063, 7, 4, "River"], // ok
+    [11091, 4, 4, "River"], // ok
+    [11107, 5, 4, "River Cross"], // ok
+    [11127, 6, 3, "River Cross"], // ok
+    [11145, 7, 4, "River Cross"], // ok
+    [11173, 5, 4, "River Cross"], // ok
+    [11193, 6, 3, "River Cross"], // ok
+    [11211, 7, 4, "River Cross"], // ok
+    [11239, 8, 8, "Trees"], // ok
+    [11303, 8, 2, "Trees"], // ok
+    [11319, 2, 8, "Trees"], // ok
+    [11335, 8, 2, "Trees"], // ok
+    [11351, 3, 8, "Trees"], // ok
+    [11375, 8, 8, "Trees"], // ok
+    [11439, 8, 8, "Trees"], // ok
+    [11503, 8, 8, "Trees"], // ok
+    [11567, 8, 8, "Trees"], // ok
+    [11631, 8, 8, "Trees"], // ok
+    [11695, 4, 8, "Trees"], // ok
+    [11727, 4, 8, "Trees"], // ok
+    [11759, 9, 5, "Trees"], // ok
+    [11804, 2, 7, "Trees"], // ok
+    [11818, 2, 3, "Trees"], // ok
+    [11824, 8, 8, "Trees"], // ok
+    [11888, 6, 6, "Trees"], // ok
+    [11924, 6, 6, "Trees"]  // ok
+]
