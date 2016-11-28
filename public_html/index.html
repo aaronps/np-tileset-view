@@ -7,44 +7,53 @@
     </head>
     <body onload="init()">
         <section id="tiles">
-            <header>Tile</header>
+            <h2>Tile</h2>
             <div class="controls">
-                <button onclick="do_prev_tile()">-</button>
-                <input type="number" min="0" max="11960" step="1" id="current_tile" value="0">
-                <button onclick="do_next_tile()">+</button>
+                <button data-action="prev_tile">&lt;</button>
+                <input data-value="current-tile" type="number" min="0" max="11960" step="1" value="0">
+                <button data-action="next_tile">&gt;</button>
             </div>
             <div class="canvas">
                 <canvas id="tile_canvas" width="32" height="32"></canvas>
             </div>
         </section>
-        <div id="create_object_view">
-            <input type="button" data-action="paint_object" value="Refresh Object" />
-            <br />
-            <div>
-                From:
-                <input type="text"   name="from_tile" value="0"/>
-                <input type="button" data-action="next_tile" value="+"/>
-                <input type="button" data-action="prev_tile" value="-"/>
+        <section id="create_object_view">
+            <h2>Object</h2>
+            <div class="controls">
+                <button data-action="paint_object">Repaint</button>
             </div>
-            <div>
-                Row length: <input type="text" name="row_length" value="8"/>
-                <input type="button" data-action="more_length" value="+"/>
-                <input type="button" data-action="less_length" value="-"/>
+            <div class="controls">
+                <label>Start Tile</label>
+                <button data-action="prev_tile">&lt;</button>
+                <input type="number" min="0" step="1" data-value="from_tile" value="0"/>
+                <button data-action="next_tile">&gt;</button>
             </div>
-            <div>
-                Num rows: <input type="text" name="num_rows" value="6"/>
-                <input type="button" data-action="more_rows" value="+"/>
-                <input type="button" data-action="less_rows" value="-"/>
+            <div class="controls">
+                <label>Width</label>
+                <button data-action="width_dec">&lt;</button>
+                <input type="number" min="1" step="1" data-value="row_length" value="8"/>
+                <button data-action="width_inc">&gt;</button>
+
+            </div>
+            <div class="controls">
+                <label>Height</label>
+                <button data-action="height_dec">&lt;</button>
+                <input type="number" min="1" step="1" data-value="num_rows" value="6"/>
+                <button data-action="height_inc">&gt;</button>
             </div>
 
-            <div>
-                <input type="text" name="to_tile" value="0" disabled="disabled"/>
-                <input type="button" data-action="set_from_tile_to" value="Set from here"/>
+            <div class="controls">
+                <label>Next tile</label>
+                <input type="text" data-value="to_tile" value="0" disabled="disabled"/>
+                <button data-action="set_start_tile">Start from this one</button>
             </div>
             
-            <canvas width="1024" height="768" style="border: 1px solid red;"></canvas>
-        </div>
+            <div class="canvas">
+                <canvas width="256" height="256"></canvas>
+            </div>
+        </section>
         <script src="jquery-1.5.1.js"></script>
+        <script src="TileView.js"></script>
         <script src="TileObjectView.js"></script>
         <script src="main.js"></script>
     </body>

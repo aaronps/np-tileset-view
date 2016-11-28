@@ -3,34 +3,44 @@
     Author     : krom
 */
 
-#tiles {
+body {
+    font-family: sans-serif;
+}
+
+section {
     border: 1px solid #acacac;
     background-color: #e6e6e6;
     position: relative;
     display: inline-block;
+    vertical-align: top;
 }
 
-#tiles header {
+section h2 {
     background-color: white;
     text-align: center;
     border-bottom: 1px solid #acacac;
-    margin-bottom: 2px;
+    margin: 0;
 }
 
-#tiles input {
+section input {
     box-sizing: border-box;
     vertical-align: middle;
     text-align: center;
 }
 
-#tiles button {
+section button {
     box-sizing: border-box;
     vertical-align: middle;
 }
 
 .controls {
-    padding: 0 2px;
+    padding: 2px;
     /*background-color: orange;*/
+}
+
+.controls label {
+    display: inline-block;
+    width: 6em;
 }
 
 .canvas {

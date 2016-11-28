@@ -1,8 +1,4 @@
 
-var tsimage = null;
-
-var tilecanvas = null;
-var tilectx = null;
 var objectcanvas = null;
 var objectctx = null;
 
@@ -12,17 +8,27 @@ var num_tiles = 11960;
 
 var tileset = null;
 
-function Tile( x, y )
-{
-    this.x = x;
-    this.y = y;
-    this.w = 32;
-    this.h = 32;
-}
+var $app = {
+    setup_actions: function(element, actions) {
+        var list = jQuery("[data-action]", element),
+            i, item, act;
+        
+        for ( i = list.length - 1; i >= 0; --i ) {
+            item = list[i];
+            act = item.getAttribute("data-action");
+            if ( actions.hasOwnProperty(act) ) {
+                jQuery(item).click(actions[act]);
+            } else {
+                alert("ERROR: Unrecognized action: [" + act + "]");
+            }
+        }
+    }
+};
 
 function TileSet( image_path, afterloadfunc )
 {
-    this.num_tiles = 11960;
+    this.tile_count = 11961;
+    this.tile_size = 32;
     this.image = new Image();
     jQuery(this.image).bind('load', {obj:this, afterload:afterloadfunc},
         function(event) {
@@ -39,9 +45,9 @@ TileSet.prototype = {
         var tswidth = this.image.width;
         var cur_x = 0;
         var cur_y = 0;
-        for ( var n = 0; n < this.num_tiles; n++ )
+        for ( var n = 0; n < this.tile_count; n++ )
         {
-            this.tiles.push( new Tile(cur_x, cur_y) );
+            this.tiles.push( {x:cur_x, y:cur_y} );
             cur_x += 32;
             if ( cur_x >= tswidth )
             {
@@ -52,30 +58,12 @@ TileSet.prototype = {
     },
     drawTile: function(ctx, tilenum, x, y) {
         var t = this.tiles[tilenum];
-        ctx.drawImage(this.image, t.x, t.y, t.w, t.h, x, y, t.w, t.h);
+        var ts = this.tile_size;
+        ctx.drawImage(this.image, t.x, t.y, ts, ts, x, y, ts, ts);
     }
     
 };
 
-function draw_current_tile()
-{
-    document.getElementById('current_tile').value = current_tile;
-    tileset.drawTile(tilectx, current_tile, 0, 0);
-    
-}
-
-function do_next_tile()
-{
-    current_tile++;
-    draw_current_tile();
-}
-
-function do_prev_tile()
-{
-    current_tile--;
-    if ( current_tile < 0 ) current_tile = 0;
-    draw_current_tile();
-}
 
 function do_refresh_object()
 {
@@ -105,20 +93,17 @@ function do_refresh_object()
     }
 }
 
-var tileobjectView = null;
-
 function init()
 {
-    
-    tilecanvas = document.getElementById('tile_canvas');
-    tilectx = tilecanvas.getContext("2d");
-    
+
 //    objectcanvas = document.getElementById('object_canvas');
 //    objectctx = objectcanvas.getContext("2d");
     
-    tileset = new TileSet('images/tiles.png', draw_current_tile);
-    tileobjectView = new TileObjectView(document.getElementById('create_object_view'),
-                                        tileset);
+    tileset = new TileSet('images/tiles.png', function(){
+        TileView(document.getElementById('tiles'), tileset);
+        new TileObjectView(document.getElementById('create_object_view'),
+                                            tileset);
+    });
 
 }
 

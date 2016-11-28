@@ -1,113 +1,83 @@
 function TileObjectView( element, tile_set )
 {
-    this.element = element;
-    this.tile_set = tile_set;
-    this.canvas = jQuery('canvas', element)[0];
-    this.ctx = this.canvas.getContext('2d');
+    var canvas = jQuery('canvas', element)[0];
+    var ctx = canvas.getContext('2d');
     
     
-    this.jfrom_tile = jQuery('input[name=from_tile]', element);
-    this.jrow_length= jQuery('input[name=row_length]', element);
-    this.jnum_rows  = jQuery('input[name=num_rows]', element);
-    this.jto_tile   = jQuery('input[name=to_tile]', element);
+    var jfrom_tile = jQuery('input[data-value=from_tile]', element);
+    var jrow_length= jQuery('input[data-value=row_length]', element);
+    var jnum_rows  = jQuery('input[data-value=num_rows]', element);
+    var jto_tile   = jQuery('input[data-value=to_tile]', element);
     
-    this.from_tile = parseInt(this.jfrom_tile.val(), 10);
-    this.row_length= parseInt(this.jrow_length.val(), 10);
-    this.num_rows  = parseInt(this.jnum_rows.val(), 10);
-    this.to_tile   = parseInt(this.jto_tile.val(), 10);
+    var model = {
+        from_tile   : parseInt(jfrom_tile.val(), 10),
+        row_length  : parseInt(jrow_length.val(), 10),
+        num_rows    : parseInt(jnum_rows.val(), 10),
+        to_tile     : parseInt(jto_tile.val(), 10)
+    };
     
-    
-    jQuery('input[type=button]', element).click({view:this}, function(event){
-        var xaction = 'action_' + (jQuery(this).attr('data-action') || '');
-        if ( xaction != 'action_')
-        {
-            if ( event.data.view[xaction] )
-            {
-                event.data.view[xaction]();
-            }
-            else
-            {
-                alert('Action not recognized: ' + xaction);
-            }
+    var actions = {
+        next_tile: function() {
+            jfrom_tile.val(model.from_tile + 1).change();
+        },
+        prev_tile: function() {
+            jfrom_tile.val(model.from_tile - 1).change();
+        },
+        width_inc: function() {
+            jrow_length.val(model.row_length + 1).change();
+        },
+        width_dec: function() {
+            jrow_length.val(model.row_length - 1).change();
+        },
+        height_inc: function() {
+            jnum_rows.val(model.num_rows + 1).change();
+        },
+        height_dec: function() {
+            jnum_rows.val(model.num_rows - 1).change();
+        },
+        paint_object: function() {
+            drawObject();
+        },
+        set_start_tile: function() {
+            jfrom_tile.val(model.to_tile).change();
         }
-        else
-        {
-            alert('no action defined for button: ' + this.name);
-        }
+    };
+    
+    $app.setup_actions(element, actions);
+    
+    jQuery('input[data-value]', element).change(function(){
+        model[this.getAttribute('data-value')] = parseInt(this.value, 10);
+        drawObject();
     });
+        drawObject();
     
-    jQuery('input[type=text]', element).change({view:this}, function(event){
-        event.data.view[this.name] = parseInt(this.value, 10);
-        event.data.view.drawObject();
-    })
+    return;
     
-    
-}
-
-TileObjectView.prototype = {
-    drawObject: function()
+    function drawObject()
     {
         var x = 0;
         var y = 0;
-        var last_tile = this.from_tile + (this.row_length * this.num_rows);
+        var last_tile = model.from_tile + (model.row_length * model.num_rows);
         var row_index = 0;
 
-        jQuery('input[name=to_tile]', this.element).val(last_tile);
-        this.to_tile = last_tile;
+        jto_tile.val(last_tile);
+        model.to_tile = last_tile;
 
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        canvas.width = model.row_length * tile_set.tile_size;
+        canvas.height = model.num_rows * tile_set.tile_size;
 
-        for ( var tile = this.from_tile; tile < last_tile; tile++ )
+//        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for ( var tile = model.from_tile; tile < last_tile; tile++ )
         {
-            this.tile_set.drawTile(this.ctx, tile, x, y);
+            tile_set.drawTile(ctx, tile, x, y);
             x += 32;
-            if ( ++row_index >= this.row_length )
+            if ( ++row_index >= model.row_length )
             {
                 row_index = 0;
                 x = 0;
                 y += 32;
             }
         }
-    },
-    action_next_tile: function()
-    {
-        this.jfrom_tile.val(this.from_tile + 1);
-        this.jfrom_tile.change();
-    },
-    action_prev_tile: function()
-    {
-        this.jfrom_tile.val(this.from_tile - 1);
-        this.jfrom_tile.change();
-    },
-    action_more_length: function()
-    {
-        this.jrow_length.val(this.row_length + 1);
-        this.jrow_length.change();
-    },
-    action_less_length: function()
-    {
-        this.jrow_length.val(this.row_length - 1);
-        this.jrow_length.change();
-    },
-    action_more_rows: function()
-    {
-        this.jnum_rows.val(this.num_rows + 1);
-        this.jnum_rows.change();
-    },
-    action_less_rows: function()
-    {
-        this.jnum_rows.val(this.num_rows - 1);
-        this.jnum_rows.change();
-    },
-    action_set_from_tile_to: function()
-    {
-        this.jfrom_tile.val(this.to_tile);
-        this.jfrom_tile.change();
-    },
-    action_paint_object: function()
-    {
-        this.drawObject();
     }
-
-    
-};
+}
