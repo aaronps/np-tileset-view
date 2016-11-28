@@ -1,0 +1,40 @@
+/* 
+    Created on : Nov 28, 2016, 8:45:26 AM
+    Author     : krom
+*/
+
+#tiles {
+    border: 1px solid #acacac;
+    background-color: #e6e6e6;
+    position: relative;
+    display: inline-block;
+}
+
+#tiles header {
+    background-color: white;
+    text-align: center;
+    border-bottom: 1px solid #acacac;
+    margin-bottom: 2px;
+}
+
+#tiles input {
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#tiles button {
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.controls {
+    padding: 0 2px;
+    /*background-color: orange;*/
+}
+
+.canvas {
+    /*background-color: green;*/
+    text-align: center;
+    padding: 5px;
+}

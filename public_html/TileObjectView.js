@@ -18,7 +18,7 @@ function TileObjectView( element, tile_set )
     
     
     jQuery('input[type=button]', element).click({view:this}, function(event){
-        var xaction = 'action_' + (jQuery(this).attr('xaction') || '');
+        var xaction = 'action_' + (jQuery(this).attr('data-action') || '');
         if ( xaction != 'action_')
         {
             if ( event.data.view[xaction] )

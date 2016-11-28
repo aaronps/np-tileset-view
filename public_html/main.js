@@ -59,6 +59,7 @@ TileSet.prototype = {
 
 function draw_current_tile()
 {
+    document.getElementById('current_tile').value = current_tile;
     tileset.drawTile(tilectx, current_tile, 0, 0);
     
 }
