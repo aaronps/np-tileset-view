@@ -1,13 +1,4 @@
 
-var objectcanvas = null;
-var objectctx = null;
-
-var current_tile = 0;
-
-var num_tiles = 11960;
-
-var tileset = null;
-
 var $app = {
     setup_actions: function(element, actions) {
         var list = jQuery("[data-action]", element),
@@ -65,45 +56,11 @@ TileSet.prototype = {
 };
 
 
-function do_refresh_object()
-{
-    var from_tile = parseInt(jQuery('input[name=from_tile]').val(), 10);
-    var row_length= parseInt(jQuery('input[name=row_length]').val(), 10);
-    var num_rows = parseInt(jQuery('input[name=num_rows]').val(), 10);
-    
-    var x = 0;
-    var y = 0;
-    var last_tile = from_tile + (row_length * num_rows);
-    var row_index = 0;
-    
-    jQuery('input[name=last_tile]').val(last_tile);
-    
-    objectctx.clearRect(0, 0, objectcanvas.width, objectcanvas.height);
-    
-    for ( var tile = from_tile; tile < last_tile; tile++ )
-    {
-        tileset.drawTile(objectctx, tile, x, y);
-        x += 32;
-        if ( ++row_index >= row_length )
-        {
-            row_index = 0;
-            x = 0;
-            y += 32;
-        }
-    }
-}
-
 function init()
 {
-
-//    objectcanvas = document.getElementById('object_canvas');
-//    objectctx = objectcanvas.getContext("2d");
-    
-    tileset = new TileSet('images/tiles.png', function(){
-        TileView(document.getElementById('tiles'), tileset);
-        new TileObjectView(document.getElementById('create_object_view'),
-                                            tileset);
+    var tileset = new TileSet('images/tiles.png', function(){
+        TileView(document.getElementById('tile_view'), tileset);
+        TileObjectView(document.getElementById('object_view'), tileset);
     });
-
 }
 
